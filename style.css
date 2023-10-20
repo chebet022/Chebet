@@ -1,45 +1,26 @@
-Body{
-	font=family:Calibri,Helvetica, sans-serif;
-	background-color:pink;
-	}
-button{
-	background-color: #4CAF50;
-	width: auto;
-	color:orange;
-padding:10px;
-margin; 10px 10px;
-border: none;
-cursor:pointer;
-position:relative;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<h1>insert data into the table</h1>
+</head>
+<body>
+    <center>
+        <?php
+require "dbconnect.php";
+$title = $_REQUEST['title'];
+$author = $_REQUEST['author'];
+$genre = $_REQUEST['genre'];
+
+$sql = "INSERT INTO books (title, author, genre) VALUES ('$title','$author','$genre')";
+
+if ($conn->query($sql) === true) {
+    echo "Record inserted successfully";
+} else {
+    echo "Error: " . $conn->error;
 }
-form{
-border:3px solid #f1f1f1;
-}
-input[type=text],input[type=password]{
-width: 50%;
-margin:8px 0;
-padding:12px 20px;
-display:inline-block;
-border:2px solid green;
-box-sizing:border-box;
-position:relative;
-}
-input[type=radio]{
-display:inline-block;
-}
-button:hover{
-opacity:0.7;
-}
-.break-point::before{
-content:"hiddentext";
-font-size:0;
-display:block;
-line-height:0;
-}
-.container{
-padding: 25px;
-background-color:lightblue;
-}
-h1{
-text-align: center;
-}
+?>
+    </center>
+</body>
+</html>
